@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Web Design Works | デモサイト一覧</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F6F4F0;
+  --surface: #FFFFFF;
+  --text: #1A1A1A;
+  --text-sub: #6B6B6B;
+  --accent: #2D2D2D;
+  --border: #E8E5E0;
+  --radius: 16px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'DM Sans', 'Noto Sans JP', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Header ── */
+.header {
+  padding: 3rem 2rem 1rem;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.header h1 {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-sub);
+  margin-bottom: 0.5rem;
+}
+
+.header p {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--text);
+}
+
+.header .sub {
+  font-size: 0.9rem;
+  color: var(--text-sub);
+  margin-top: 0.8rem;
+  line-height: 1.7;
+}
+
+/* ── Grid ── */
+.grid {
+  max-width: 960px;
+  margin: 2.5rem auto 4rem;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+/* ── Card ── */
+.card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.08);
+}
+
+.card-thumb {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  position: relative;
+}
+
+.card-thumb-inner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  transition: transform 0.4s;
+}
+
+.card:hover .card-thumb-inner {
+  transform: scale(1.05);
+}
+
+.card-body {
+  padding: 1.2rem 1.4rem 1.4rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-tag {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-sub);
+  margin-bottom: 0.5rem;
+}
+
+.card-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+  line-height: 1.4;
+}
+
+.card-desc {
+  font-size: 0.82rem;
+  color: var(--text-sub);
+  line-height: 1.7;
+  flex: 1;
+}
+
+.card-arrow {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.05em;
+}
+
+.card-arrow span {
+  transition: transform 0.3s;
+}
+
+.card:hover .card-arrow span {
+  transform: translateX(4px);
+}
+
+/* ── Footer ── */
+.footer {
+  text-align: center;
+  padding: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.footer p {
+  font-size: 0.72rem;
+  color: var(--text-sub);
+  letter-spacing: 0.08em;
+}
+
+/* ── Animations ── */
+.card {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: cardIn 0.6s ease forwards;
+}
+
+.card:nth-child(1) { animation-delay: 0.1s; }
+.card:nth-child(2) { animation-delay: 0.2s; }
+.card:nth-child(3) { animation-delay: 0.3s; }
+.card:nth-child(4) { animation-delay: 0.4s; }
+.card:nth-child(5) { animation-delay: 0.5s; }
+.card:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes cardIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .header p { font-size: 1.5rem; }
+  .grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <h1>Web Design Works</h1>
+  <p>デモサイト一覧</p>
+  <p class="sub">制作実績のデモページです。各カードをクリックするとサイトをご覧いただけます。</p>
+</header>
+
+<main class="grid">
+
+  <!--
+    ┌─────────────────────────────────────────────┐
+    │  デモを追加するときは、下のテンプレートを     │
+    │  コピーして情報を書き換えてください。         │
+    │                                               │
+    │  ・href → フォルダ名/                         │
+    │  ・background → サムネイルの色                │
+    │  ・絵文字 → サムネイルのアイコン              │
+    │  ・tag → 業種                                 │
+    │  ・title → 店名・サイト名                     │
+    │  ・desc → 説明                                │
+    └─────────────────────────────────────────────┘
+  -->
+
+  <!-- ① いのパン店 -->
+  <a href="inopan/" class="card">
+    <div class="card-thumb">
+      <div class="card-thumb-inner" style="background: linear-gradient(135deg, #FDF6EC, #E8D5B7);">
+        🐗
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-tag">Bakery</div>
+      <div class="card-title">いのパン店</div>
+      <p class="card-desc">北品川の住宅街にある小さなパン屋。温かみのあるクリーム×ブラウンのデザイン。</p>
+      <div class="card-arrow">デモを見る <span>→</span></div>
+    </div>
+  </a>
+
+  <!-- ② 追加テンプレート（コピーして使ってください）
+  <a href="フォルダ名/" class="card">
+    <div class="card-thumb">
+      <div class="card-thumb-inner" style="background: linear-gradient(135deg, #色1, #色2);">
+        絵文字
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-tag">業種</div>
+      <div class="card-title">サイト名</div>
+      <p class="card-desc">説明文をここに。</p>
+      <div class="card-arrow">デモを見る <span>→</span></div>
+    </div>
+  </a>
+  -->
+
+</main>
+
+<footer class="footer">
+  <p>© 2026 Web Design Works</p>
+</footer>
+
+</body>
+</html>
